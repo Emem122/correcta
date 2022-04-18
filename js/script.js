@@ -75,32 +75,32 @@ tl.from(".hero__title", {
 		"-=0.5"
 	)
 	.from(
-		".hero__img--image",
+		".hero__img--blue",
 		0.8,
 		{
 			// y: 60,
 			scale: 0.5,
 			ease: Back.easeInOut.config(3),
 		},
-		"-=0.7"
+		"-=0.3"
 	)
 	.from(
 		".hero__img--yellow",
-		0.9,
+		0.7,
 		{
 			// y: 60,
 			scale: 0.3,
 			ease: Back.easeInOut.config(4),
 		},
-		"-=0.5"
+		"-=0.45"
 	)
 	.from(
-		".hero__img--blue",
-		0.9,
+		".hero__img--image",
+		0.7,
 		{
 			// y: 60,
 			scale: 0.2,
 			ease: Back.easeInOut.config(4),
 		},
-		"-=0.6"
+		"-=0.45"
 	);

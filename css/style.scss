@@ -480,16 +480,16 @@ hero メインビジュアル
 		&--yellow {
 			position: absolute;
 			max-width: 600px;
-			right: 5px;
-			top: 0px;
+			right: -10%;
+			bottom: -9%;
 			z-index: -1;
 			transform: scale(0.9);
 		}
 		&--blue {
 			position: absolute;
 			max-width: 600px;
-			right: 0px;
-			top: -10px;
+			left: -6%;
+			top: -5%;
 			z-index: -2;
 		}
 	}
