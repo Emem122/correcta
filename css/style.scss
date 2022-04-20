@@ -645,7 +645,7 @@ reason 選ばれる理由
 .reason {
 	margin-top: 2rem;
 	@include mq(min-lgpc) {
-		max-width: 1400px;
+		// max-width: 1400px;
 		margin-right: auto;
 		margin-left: auto;
 	}
@@ -657,6 +657,7 @@ reason 選ばれる理由
 		text-align: center;
 		margin-bottom: 5%;
 	}
+
 	&__inner {
 		display: flex;
 
@@ -667,10 +668,7 @@ reason 選ばれる理由
 	&__item {
 		display: flex;
 		align-items: flex-start;
-		// position: relative;
 		width: calc(100% / 3);
-		padding: 5rem clamp(3rem, 3%, 4rem);
-		padding-left: 1%;
 		color: #fff;
 		&[data-order="first"] {
 			background-color: var(--clr-brown-secondary);
@@ -686,8 +684,17 @@ reason 選ばれる理由
 			width: 100%;
 		}
 
+		&--wrap {
+			max-width: 500px;
+			margin: 0 auto;
+			display: flex;
+			align-items: flex-start;
+			padding: 5rem clamp(3rem, 3%, 4rem);
+			padding-left: 1%;
+		}
+
 		&--image {
-			max-width: 90px;
+			max-width: 70px;
 			width: 30%;
 		}
 		&--title {
