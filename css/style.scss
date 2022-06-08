@@ -36,20 +36,21 @@ $image: "../img/";
 
 /* root */
 :root {
+	/* others */
+	--transition: all 0.3s linear;
 	/* font size */
+
 	--fz-xs: clamp(1rem, 1vw, 1.2rem);
 	--fz-sm: clamp(1.2rem, 1.2vw, 1.4rem);
 	--fz-md: clamp(1.4rem, 1.4vw, 1.6rem);
 	--fz-lg: clamp(1.6rem, 1.4vw, 1.8rem);
 	--fz-xl: clamp(1.8rem, 1.8vw, 2rem);
 	--fz-xxl: clamp(2rem, 1.8vw, 2.2rem);
-
 	/* font family */
 	--ff-title: "Saira", "游ゴシック体", YuGothic, "游ゴシック", "Yu Gothic", sans-serif;
 	--ff-primary: "Roboto", "游ゴシック体", YuGothic, "游ゴシック", "Yu Gothic", sans-serif;
 	--ff-secondary: "Poppins", "游ゴシック体", YuGothic, "游ゴシック", "Yu Gothic", sans-serif;
 	--ff-icon: "Font Awesome 6 Free";
-
 	/* colors */
 	--clr-brown: #23120b;
 	--clr-brown-secondary: #5c483f;
@@ -58,9 +59,6 @@ $image: "../img/";
 	--clr-blue: #21209c;
 	--clr-blue-secondary: #50508a;
 	--clr-green: #229c20;
-
-	/* others */
-	--transition: all 0.3s linear;
 	--spacing: 0.1rem;
 	--radius: 0.5rem;
 	--button-shadow: 1px 1px 15px rgba(0, 0, 0, 0.1);
@@ -68,22 +66,22 @@ $image: "../img/";
 
 /* br */
 br.down-sp {
-	display: none;
 	@include mq(max-sp) {
 		display: block;
 	}
+	display: none;
 }
 br.down-tab {
-	display: none;
 	@include mq(max-tab) {
 		display: block;
 	}
+	display: none;
 }
 br.up-pc {
-	display: block;
 	@include mq(max-tab) {
 		display: none;
 	}
+	display: block;
 }
 
 /* =================================== 
@@ -91,18 +89,19 @@ scss
 ==================================== */
 /* 共通 */
 html {
-	font-size: 62.5%;
 	letter-spacing: var(--spacing);
+	font-size: 62.5%;
+
 	scroll-behavior: smooth;
 }
 
 body {
-	font-size: var(--fz-md);
+	overflow-x: hidden;
+	box-sizing: border-box;
+	letter-spacing: var(--spacing);
 	color: var(--clr-brown);
 	font-family: var(--ff-primary);
-	letter-spacing: var(--spacing);
-	box-sizing: border-box;
-	overflow-x: hidden;
+	font-size: var(--fz-md);
 }
 
 h1 {
@@ -149,17 +148,18 @@ img {
 }
 
 button {
-	background-color: transparent;
-	border: none;
-	cursor: pointer;
-	outline: none;
 	padding: 0;
+	cursor: pointer;
+	border: none;
+	outline: none;
+	background-color: transparent;
+
 	appearance: none;
 }
 
 .wrapper {
-	padding-left: 4%;
 	padding-right: 4%;
+	padding-left: 4%;
 }
 
 [data-width="900"] {
@@ -168,8 +168,8 @@ button {
 
 /*画面全体のフェードイン設定*/
 body {
-	animation: fadeIn 2s ease 0s 1 normal;
 	-webkit-animation: fadeIn 2s ease 0s 1 normal;
+	animation: fadeIn 2s ease 0s 1 normal;
 }
 
 @keyframes fadeIn {
@@ -192,69 +192,50 @@ body {
 	}
 }
 
-/*各部分のフェードイン設定*/
-/* 画面外にいる状態 */
-// .fadein {
-// 	opacity: 0.1;
-// 	transform: translate(0, 40px);
-// 	transition: all 420ms;
-// }
-// /* 画面内に入った状態 */
-// .fadein.scrollin {
-// 	opacity: 1;
-// 	transform: translate(0, 0);
-// }
-// .fadein.later1 {
-// 	transition: all 700ms;
-// }
-// .fadein.later2 {
-// 	transition: all 900ms;
-// }
-
 /* =================================== 
 header
 ==================================== */
 .header {
-	height: 70px;
-	top: 0;
-	display: flex;
-	align-items: center;
-	font-size: var(--fz-sm);
-	font-weight: bold;
-	background-color: #fff;
-	position: fixed;
-	width: 100%;
-	z-index: 100;
-	box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.08);
-	border-radius: 0 0 35px 35px;
 	@include mq(max-sp) {
 		border-radius: 0 0 30px 30px;
 	}
+	position: fixed;
+	z-index: 100;
+	top: 0;
+	display: flex;
+	align-items: center;
+	width: 100%;
+	height: 70px;
+	border-radius: 0 0 35px 35px;
+	background-color: #ffffff;
+	box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.08);
+	font-size: var(--fz-sm);
+	font-weight: bold;
 	.wrapper {
-		display: flex;
-		align-items: center;
-		justify-content: space-between;
-		width: 100%;
 		@include mq(min-lgpc) {
 			max-width: 1400px;
 			margin: 0 auto;
 		}
-
 		@include mq(max-pc) {
 			justify-content: start;
 		}
+		display: flex;
+		align-items: center;
+		justify-content: space-between;
+		width: 100%;
 	}
 
 	/* logo */
 	&__logo {
+		@include mq(max-pc) {
+			order: 1;
+			margin-right: auto;
+		}
 		a {
 			display: flex;
 			align-items: center;
+
 			gap: 1rem;
-		}
-		@include mq(max-pc) {
-			margin-right: auto;
-			order: 1;
 		}
 
 		&--img {
@@ -278,47 +259,35 @@ header
 	/* nav */
 	&__nav {
 		@include mq(max-pc) {
-			right: -120%;
 			position: absolute;
-			transition: all 0.4s ease-in;
+			top: 0;
+			right: -120%;
 			width: 100%;
 			height: 100vh;
-			background-color: #fff;
-			top: 0;
+			transition: all 0.4s ease-in;
+			background-color: #ffffff;
 			&.active {
-				transition: all 0.4s ease-in;
 				right: 0;
+				transition: all 0.4s ease-in;
 			}
 		}
 	}
 	.nav__list {
-		display: flex;
-		gap: 2vw;
-
 		@include mq(max-pc) {
 			position: absolute;
-			flex-direction: column;
-			gap: 6vh;
 			top: 50%;
 			left: 50%;
+			flex-direction: column;
 			transform: translate(-50%, -50%);
 			text-align: center;
 			font-size: var(--fz-md);
+
+			gap: 6vh;
 		}
+		display: flex;
+
+		gap: 2vw;
 		.nav__item a {
-			position: relative;
-			&::after {
-				position: absolute;
-				content: "";
-				display: block;
-				margin-top: 5px;
-				height: 2px;
-				width: 0%;
-				left: 50%;
-				transition: var(--transition);
-				transform: translateX(-50%);
-				background-color: var(--clr-blue-secondary);
-			}
 			@include mq(min-pc) {
 				&:hover {
 					color: var(--clr-blue-secondary);
@@ -327,6 +296,19 @@ header
 						transition: var(--transition);
 					}
 				}
+			}
+			position: relative;
+			&::after {
+				position: absolute;
+				left: 50%;
+				display: block;
+				width: 0%;
+				height: 2px;
+				margin-top: 5px;
+				content: "";
+				transition: var(--transition);
+				transform: translateX(-50%);
+				background-color: var(--clr-blue-secondary);
 			}
 		}
 	}
@@ -337,22 +319,22 @@ header
 			display: none;
 		}
 		position: relative;
-		width: 50px;
-		height: 50px;
-		cursor: pointer;
-		background: #fff;
 		z-index: 100;
 		order: 3;
+		width: 50px;
+		height: 50px;
 		margin-left: 1rem;
+		cursor: pointer;
+		background: #ffffff;
 	}
 
 	.hamburger span {
-		display: inline-block;
-		transition: all 0.4s;
 		position: absolute;
 		left: 13px;
+		display: inline-block;
 		height: 2px;
-		background-color: #666;
+		transition: all 0.4s;
+		background-color: #666666;
 	}
 
 	.hamburger span:nth-of-type(1) {
@@ -368,15 +350,15 @@ header
 	.hamburger.active span:nth-of-type(1) {
 		top: 20px;
 		left: 16px;
-		transform: translateY(6px) rotate(-45deg);
 		width: 35%;
+		transform: translateY(6px) rotate(-45deg);
 	}
 
 	.hamburger.active span:nth-of-type(2) {
 		top: 32px;
 		left: 16px;
-		transform: translateY(-6px) rotate(45deg);
 		width: 35%;
+		transform: translateY(-6px) rotate(45deg);
 	}
 
 	&__login {
@@ -385,12 +367,12 @@ header
 		}
 	}
 	.login__list {
-		display: flex;
-		gap: 2vw;
-
 		@include mq(max-sp) {
 			font-size: 1rem;
 		}
+		display: flex;
+
+		gap: 2vw;
 	}
 	.login__item--login a:hover {
 		@include mq(min-pc) {
@@ -399,18 +381,18 @@ header
 	}
 
 	.login__item--register a {
-		padding: 1rem 2.2rem;
-		border: 2px solid var(--clr-yellow);
-		border-radius: 30px;
-		color: var(--clr-yellow);
-		box-shadow: var(--button-shadow);
 		@include mq(min-pc) {
 			&:hover {
+				color: #ffffff;
 				background-color: var(--clr-yellow);
-				color: #fff;
 				box-shadow: none;
 			}
 		}
+		padding: 1rem 2.2rem;
+		color: var(--clr-yellow);
+		border: 2px solid var(--clr-yellow);
+		border-radius: 30px;
+		box-shadow: var(--button-shadow);
 	}
 }
 
@@ -427,29 +409,31 @@ hero メインビジュアル
 .hero {
 	margin-top: 70px;
 	.wrapper {
-		height: calc(100vh - 70px);
-		display: flex;
-		align-items: center;
-		justify-content: center;
-		margin-left: 5rem;
-		gap: 8rem;
-
 		@include mq(max-tab) {
 			// height: auto;
 			flex-direction: column-reverse;
-			padding: clamp(1rem, 2vw, 4rem) 0 3rem;
 			margin-left: auto;
+			padding: clamp(1rem, 2vw, 4rem) 0 3rem;
+
 			gap: 2rem;
 		}
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		height: calc(100vh - 70px);
+		margin-left: 5rem;
+
+		gap: 8rem;
 	}
 
 	&__inner {
+		display: flex;
+		align-items: center;
+		flex-direction: column;
 		max-width: 320px;
 		text-align: center;
-		display: flex;
-		flex-direction: column;
+
 		gap: 3rem;
-		align-items: center;
 	}
 	&__title {
 		line-height: 1.5em;
@@ -462,73 +446,72 @@ hero メインビジュアル
 	}
 
 	&__img {
-		max-width: 600px;
-		position: relative;
-
 		@include mq(max-tab) {
 			width: 60%;
 			margin-bottom: 3rem;
 		}
+		position: relative;
+		max-width: 600px;
 
 		&--yellow {
 			position: absolute;
-			max-width: 600px;
+			z-index: -1;
 			right: -10%;
 			bottom: -9%;
-			z-index: -1;
+			max-width: 600px;
 			transform: scale(0.9);
 		}
 		&--blue {
 			position: absolute;
-			max-width: 600px;
-			left: -6%;
-			top: -5%;
 			z-index: -2;
+			top: -5%;
+			left: -6%;
+			max-width: 600px;
 		}
 	}
 	&__register {
 		&--link {
-			display: block;
-			padding: 1.4rem 4.3rem;
-			border-radius: 30px;
-			font-size: var(--fz-lg);
-			font-weight: bold;
-			color: #fff;
-			border: 2px solid var(--clr-blue);
-			background-color: var(--clr-blue);
-			box-shadow: var(--button-shadow);
 			@include mq(min-pc) {
 				&:hover {
 					color: var(--clr-blue);
-					background-color: #fff;
+					background-color: #ffffff;
 					box-shadow: none;
 				}
 			}
+			display: block;
+			padding: 1.4rem 4.3rem;
+			color: #ffffff;
+			border: 2px solid var(--clr-blue);
+			border-radius: 30px;
+			background-color: var(--clr-blue);
+			box-shadow: var(--button-shadow);
+			font-size: var(--fz-lg);
+			font-weight: bold;
 		}
 	}
 
 	&__login {
 		margin-top: 1.5rem;
 		&--link {
+			@include mq(min-pc) {
+				&:hover {
+					color: #666666;
+					i {
+						transition: var(--transition);
+						color: #666666;
+					}
+				}
+			}
 			display: flex;
 			align-items: center;
 			justify-content: center;
 			font-size: 1.2rem;
 			font-weight: bold;
-			@include mq(min-pc) {
-				&:hover {
-					color: #666;
-					i {
-						color: #666;
-						transition: var(--transition);
-					}
-				}
-			}
 			i {
 				margin-left: 0.75rem;
-				font-size: var(--fz-sm);
-				color: var(--clr-brown);
 				transition: var(--transition);
+				color: var(--clr-brown);
+				font-size: var(--fz-sm);
 			}
 		}
 	}
@@ -538,91 +521,90 @@ hero メインビジュアル
 cando できること
 ==================================== */
 .cando {
-	margin-top: 1rem;
 	@include mq(max-sp) {
 		margin-top: 2rem;
 	}
+	margin-top: 1rem;
 	.wrapper {
-		position: relative;
-		display: flex;
-		justify-content: center;
-		gap: 5%;
-		margin-right: 5%;
-		border-radius: 0 195px 0 0;
-		padding-top: clamp(5rem, 8%, 10rem);
-		padding-bottom: clamp(5rem, 8%, 10rem);
-		background: linear-gradient(var(--clr-yellow) 70%, transparent 70%);
-		z-index: -2;
-
 		@include mq(max-sp) {
 			flex-direction: column;
-			background: linear-gradient(var(--clr-yellow) 85%, transparent 85%);
 			margin-right: 0px;
+			background: linear-gradient(var(--clr-yellow) 85%, transparent 85%);
+
 			gap: 0;
 		}
+		position: relative;
+		z-index: -2;
+		display: flex;
+		justify-content: center;
+		margin-right: 5%;
+		padding-top: clamp(5rem, 8%, 10rem);
+		padding-bottom: clamp(5rem, 8%, 10rem);
+		border-radius: 0 195px 0 0;
+		background: linear-gradient(var(--clr-yellow) 70%, transparent 70%);
+
+		gap: 5%;
 	}
 	&__inner {
-		text-align: center;
-		margin-top: 5%;
-
 		@include mq(max-sp) {
 			max-width: 80%;
 			// margin-top: 7%;
 			// margin-bottom: 8%;
 			margin: 7% auto 8%;
 		}
+		margin-top: 5%;
+		text-align: center;
 	}
 	&__title {
 		margin-bottom: clamp(2rem, 3vw, 4rem);
-		color: #fff;
+		color: #ffffff;
 		&::after {
-			content: "\f10e";
 			position: absolute;
+			z-index: -1;
 			top: 2%;
 			left: 10%;
-			line-height: 1;
-			font-size: clamp(10rem, 18vw, 20rem);
-			font-family: var(--ff-icon);
-			font-weight: 900;
+			content: "\f10e";
 			color: rgba(255, 255, 255, 0.4);
-			z-index: -1;
+			font-family: var(--ff-icon);
+			font-size: clamp(10rem, 18vw, 20rem);
+			font-weight: 900;
+			line-height: 1;
 		}
 	}
 
 	&__board {
-		position: relative;
-		max-width: 80%;
 		@include mq(max-sp) {
 			margin: 0 auto;
 		}
+		position: relative;
+		max-width: 80%;
 		&--img {
 			width: 100%;
 			max-width: 380px;
 		}
 		&--text {
-			padding: 25% 10% 12% 15%;
-			width: 100%;
-			height: 100%;
 			position: absolute;
+			top: 0;
+			left: 0;
 			display: block;
-			box-sizing: border-box;
 			display: flex;
 			flex-direction: column;
 			justify-content: space-between;
-			top: 0;
-			left: 0;
+			box-sizing: border-box;
+			width: 100%;
+			height: 100%;
+			padding: 25% 10% 12% 15%;
 		}
 	}
 	&__checklist {
-		line-height: 2.2;
-
 		@include mq(max-sp) {
 			line-height: 1.8;
 		}
+		line-height: 2.2;
 		i {
+			margin-right: 0.85rem;
 			color: var(--clr-blue);
 			font-size: 1.8rem;
-			margin-right: 0.85rem;
 		}
 	}
 	&__checkinfo {
@@ -636,7 +618,6 @@ cando できること
 reason 選ばれる理由
 ==================================== */
 .reason {
-	margin-top: 2rem;
 	@include mq(min-lgpc) {
 		// max-width: 1400px;
 		margin-right: auto;
@@ -645,24 +626,27 @@ reason 選ばれる理由
 	@include mq(max-sp) {
 		margin-top: 1rem;
 	}
+	margin-top: 2rem;
 
 	&__title {
-		text-align: center;
 		margin-bottom: 5%;
+		text-align: center;
 	}
 
 	&__inner {
-		display: flex;
-
 		@include mq(max-tab) {
 			flex-direction: column;
 		}
+		display: flex;
 	}
 	&__item {
+		@include mq(max-tab) {
+			width: 100%;
+		}
 		display: flex;
 		align-items: flex-start;
 		width: calc(100% / 3);
-		color: #fff;
+		color: #ffffff;
 		&[data-order="first"] {
 			background-color: var(--clr-brown-secondary);
 		}
@@ -673,27 +657,23 @@ reason 選ばれる理由
 			background-color: var(--clr-yellow-secondary);
 		}
 
-		@include mq(max-tab) {
-			width: 100%;
-		}
-
 		&--wrap {
-			max-width: 500px;
-			margin: 0 auto;
 			display: flex;
 			align-items: flex-start;
+			max-width: 500px;
+			margin: 0 auto;
 			padding: 5rem clamp(3rem, 3%, 4rem);
 			padding-left: 1%;
 		}
 
 		&--image {
-			max-width: 70px;
 			width: 30%;
+			max-width: 70px;
 		}
 		&--title {
 			position: relative;
-			font-size: var(--fz-xl);
 			margin-bottom: 1em;
+			font-size: var(--fz-xl);
 		}
 	}
 }
@@ -702,64 +682,64 @@ reason 選ばれる理由
 plan プラン一覧
 ==================================== */
 .plan {
-	margin: clamp(5rem, 6vw, 10rem) auto;
 	@include mq(min-lgpc) {
 		max-width: 1400px;
 		margin-right: auto;
 		margin-left: auto;
 	}
+	margin: clamp(5rem, 6vw, 10rem) auto;
 
 	&__title {
-		text-align: center;
 		margin-bottom: clamp(2rem, 3vw, 3.2rem);
+		text-align: center;
 	}
 	&__inner {
-		margin: 0 10vw;
-		display: flex;
-		gap: 4rem;
-
 		@include mq(max-pc) {
-			flex-direction: column;
 			align-items: center;
+			flex-direction: column;
 		}
+		display: flex;
+		margin: 0 10vw;
+
+		gap: 4rem;
 	}
 	.card {
-		width: calc(100% / 3);
-		border: 1px solid #e4e3e3;
-		border-radius: 10px;
-		background-color: #fcfaf6;
 		@include mq(max-pc) {
 			width: 100%;
 			max-width: 400px;
 		}
+		width: calc(100% / 3);
+		border: 1px solid #e4e3e3;
+		border-radius: 10px;
+		background-color: #fcfaf6;
 
 		&__header {
-			position: relative;
-			min-height: 155px;
-			padding: 4rem 2rem 2rem;
-			border-bottom: 1px solid #e4e3e3;
-			border-radius: 10px 10px 0 0;
-			background-color: #fff;
-			text-align: center;
 			@include mq(max-pc) {
 				min-height: 120px;
 			}
+			position: relative;
+			min-height: 155px;
+			padding: 4rem 2rem 2rem;
+			text-align: center;
+			border-bottom: 1px solid #e4e3e3;
+			border-radius: 10px 10px 0 0;
+			background-color: #ffffff;
 			&--icon {
-				position: absolute;
-				font-size: 60px;
-				color: #f1f1f1;
-				top: 3rem;
-				left: 5rem;
 				@include mq(max-sp) {
 					top: 2rem;
 					left: 3rem;
 				}
+				position: absolute;
+				top: 3rem;
+				left: 5rem;
+				color: #f1f1f1;
+				font-size: 60px;
 			}
 			&--title {
 				position: relative;
-				font-size: var(--fz-xxl);
-				text-align: center;
 				margin-bottom: 1rem;
+				text-align: center;
+				font-size: var(--fz-xxl);
 			}
 			&--text {
 				position: relative;
@@ -769,16 +749,16 @@ plan プラン一覧
 			}
 		}
 		&__inner {
-			padding: 2.5rem;
 			@include mq(max-tab) {
 				padding: 2rem 3.5rem 3.5rem;
 			}
+			padding: 2.5rem;
 
 			&--price {
-				min-height: 32px;
 				display: flex;
-				justify-content: center;
 				align-items: center;
+				justify-content: center;
+				min-height: 32px;
 				text-align: center;
 
 				h4 {
@@ -790,42 +770,43 @@ plan プラン一覧
 				}
 			}
 			&--list {
-				display: flex;
-				flex-direction: column;
-				gap: 1rem;
-				padding: 0 0.9rem;
 				@include mq(max-tab) {
 					padding: 0 1rem;
 				}
+				display: flex;
+				flex-direction: column;
+				padding: 0 0.9rem;
+
+				gap: 1rem;
 			}
 			&--listItem {
 				font-size: 14px;
 				i {
 					margin-right: 1rem;
-					font-weight: bold;
-					font-size: var(--fz-lg);
 					color: var(--clr-green);
+					font-size: var(--fz-lg);
+					font-weight: bold;
 				}
 			}
 			&--button {
-				width: 100%;
-				margin: 1rem 0 1.6rem;
-				padding: 0.8rem 0;
-				border: 1px solid var(--clr-green);
-				border-radius: 5px;
-				font-size: 1.6rem;
-				color: #fff;
-				font-weight: bold;
-				background-color: var(--clr-green);
-				box-shadow: var(--button-shadow);
 				@include mq(min-pc) {
 					transition: var(--transition);
 					&:hover {
-						background-color: var(--clr-yellow);
-						border: 1px solid var(--clr-yellow);
 						transition: var(--transition);
+						border: 1px solid var(--clr-yellow);
+						background-color: var(--clr-yellow);
 					}
 				}
+				width: 100%;
+				margin: 1rem 0 1.6rem;
+				padding: 0.8rem 0;
+				color: #ffffff;
+				border: 1px solid var(--clr-green);
+				border-radius: 5px;
+				background-color: var(--clr-green);
+				box-shadow: var(--button-shadow);
+				font-size: 1.6rem;
+				font-weight: bold;
 			}
 		}
 	}
@@ -841,17 +822,17 @@ plan プラン一覧
 				font-size: var(--fz-lg);
 			}
 			&--button {
-				color: var(--clr-green);
-				background-color: #fff;
 				@include mq(min-pc) {
 					transition: var(--transition);
 					&:hover {
-						color: #fff;
-						background-color: var(--clr-yellow);
-						border: 1px solid var(--clr-yellow);
 						transition: var(--transition);
+						color: #ffffff;
+						border: 1px solid var(--clr-yellow);
+						background-color: var(--clr-yellow);
 					}
 				}
+				color: var(--clr-green);
+				background-color: #ffffff;
 			}
 		}
 	}
@@ -885,44 +866,45 @@ questions
 	padding: 2rem;
 
 	&--title {
-		text-align: center;
-		margin-bottom: 5rem;
 		@include mq(max-sp) {
 			margin-bottom: 0;
 		}
+		margin-bottom: 5rem;
+		text-align: center;
 	}
 
 	&__content {
+		@include mq(max-sp) {
+			flex-direction: column;
+
+			gap: 1em;
+		}
 		display: flex;
 		justify-content: space-between;
 		padding: 3rem 1rem clamp(2.5rem, 4vw, 4.2rem);
-		border-bottom: 1px solid #ddd;
-		@include mq(max-sp) {
-			flex-direction: column;
-			gap: 1em;
-		}
+		border-bottom: 1px solid #dddddd;
 		&--question {
-			width: 40%;
-			font-weight: bold;
-			font-size: var(--fz-lg);
 			@include mq(max-sp) {
 				width: 100%;
 			}
+			width: 40%;
+			font-size: var(--fz-lg);
+			font-weight: bold;
 		}
 		&--answer {
-			width: 55%;
-			font-size: var(--fz-md);
 			@include mq(max-sp) {
 				width: 100%;
-			}
-			a {
-				color: var(--clr-blue-secondary);
-				text-decoration: underline;
 			}
 			@include mq(min-pc) {
 				a:hover {
 					color: var(--clr-blue);
 				}
+			}
+			width: 55%;
+			font-size: var(--fz-md);
+			a {
+				text-decoration: underline;
+				color: var(--clr-blue-secondary);
 			}
 		}
 	}
@@ -932,21 +914,22 @@ questions
 お問い合わせ contact
 ==================================== */
 .contact {
-	display: flex;
-	max-width: 800px;
-	justify-content: space-between;
-	margin: 0 auto clamp(5rem, 6vw, 10rem);
-	padding: 0 2rem;
 	@include mq(max-sp) {
-		flex-direction: column;
 		align-items: center;
+		flex-direction: column;
+
 		gap: 2rem;
 	}
+	display: flex;
+	justify-content: space-between;
+	max-width: 800px;
+	margin: 0 auto clamp(5rem, 6vw, 10rem);
+	padding: 0 2rem;
 	& > * {
-		width: 40%;
 		@include mq(max-sp) {
 			width: 100%;
 		}
+		width: 40%;
 	}
 	&__textArea {
 		@include mq(max-sp) {
@@ -959,27 +942,28 @@ questions
 	&__addressArea {
 		margin-top: 2rem;
 		padding: 0.5rem 1rem;
-		border-left: 4px solid #333;
-		color: #333;
+		color: #333333;
+		border-left: 4px solid #333333;
 		address {
-			line-height: 1.5;
 			font-style: normal;
+			line-height: 1.5;
 			a {
-				color: var(--clr-blue-secondary);
-				font-style: normal;
 				@include mq(min-pc) {
 					&:hover {
 						color: var(--clr-blue);
 					}
 				}
+				color: var(--clr-blue-secondary);
+				font-style: normal;
 			}
 		}
 	}
 
 	&__form {
 		display: flex;
-		flex-direction: column;
 		align-items: center;
+		flex-direction: column;
+
 		gap: 1.5rem;
 		&--input,
 		&--text {
@@ -987,8 +971,8 @@ questions
 			input,
 			textarea {
 				box-sizing: border-box;
-				min-height: 50px;
 				width: 100%;
+				min-height: 50px;
 				padding: 0.5rem 1rem;
 				border: 1px solid #e1e1e1;
 				border-radius: 5px;
@@ -1002,15 +986,6 @@ questions
 			}
 		}
 		input[type="submit"] {
-			max-width: 100px;
-			margin-right: auto;
-			padding: 0.8rem 3.5rem;
-			border: none;
-			border-radius: 5px;
-			background-color: var(--clr-brown);
-			color: #fff;
-			font-size: var(--fz-lg);
-			cursor: pointer;
 			@include mq(min-pc) {
 				transition: var(--transition);
 				&:hover {
@@ -1021,6 +996,15 @@ questions
 			@include mq(max-sp) {
 				margin-left: auto;
 			}
+			max-width: 100px;
+			margin-right: auto;
+			padding: 0.8rem 3.5rem;
+			cursor: pointer;
+			color: #ffffff;
+			border: none;
+			border-radius: 5px;
+			background-color: var(--clr-brown);
+			font-size: var(--fz-lg);
 		}
 	}
 }
@@ -1030,31 +1014,31 @@ questions
 ==================================== */
 .trynow {
 	padding: clamp(6rem, 10vw, 11rem) 2rem;
-	background-color: var(--clr-blue);
-	color: #fff;
 	text-align: center;
+	color: #ffffff;
+	background-color: var(--clr-blue);
 	&--title {
 		margin-bottom: 2rem;
 	}
 	&--btn {
 		margin-top: 3rem;
 		a {
-			display: inline-block;
-			padding: 2rem 5rem;
-			border-radius: 50px;
-			background-color: var(--clr-yellow);
-			border: 3px solid var(--clr-yellow);
-			color: #fff;
-			font-weight: bold;
-			font-size: var(--fz-xl);
 			@include mq(min-pc) {
 				&:hover {
-					border: 3px solid #fff;
-					background-color: transparent;
-					background-color: #fff;
 					color: var(--clr-blue);
+					border: 3px solid #ffffff;
+					background-color: transparent;
+					background-color: #ffffff;
 				}
 			}
+			display: inline-block;
+			padding: 2rem 5rem;
+			color: #ffffff;
+			border: 3px solid var(--clr-yellow);
+			border-radius: 50px;
+			background-color: var(--clr-yellow);
+			font-size: var(--fz-xl);
+			font-weight: bold;
 		}
 	}
 }
@@ -1065,48 +1049,48 @@ questions
 .footer {
 	background-color: #fcfaf6;
 	&__container {
-		padding: clamp(4rem, 5vw, 10rem) 10vw;
 		@include mq(min-lgpc) {
 			max-width: 1400px;
 			margin-right: auto;
 			margin-left: auto;
 		}
 		@include mq(max-tab) {
-			padding-left: 1rem;
 			padding-right: 1rem;
+			padding-left: 1rem;
 		}
+		padding: clamp(4rem, 5vw, 10rem) 10vw;
 	}
 	&__nav {
-		display: flex;
-		justify-content: space-between;
 		@include mq(max-tab) {
-			flex-direction: column;
 			align-items: center;
+			flex-direction: column;
 			text-align: center;
+
 			gap: 3rem;
 		}
+		display: flex;
+		justify-content: space-between;
 		&--title {
 			margin-bottom: 1rem;
 			font-size: var(--fz-md);
 		}
 		&--list {
-			line-height: 1.5;
 			@include mq(max-tab) {
 				line-height: 1.7;
 			}
+			line-height: 1.5;
 			a {
-				color: var(--clr-blue-secondary);
 				@include mq(min-pc) {
 					position: relative;
 					&::after {
-						content: "";
 						position: absolute;
-						width: 0%;
-						height: 1px;
 						bottom: -1px;
 						left: 0;
-						background-color: var(--clr-blue-secondary);
+						width: 0%;
+						height: 1px;
+						content: "";
 						transition: var(--transition);
+						background-color: var(--clr-blue-secondary);
 					}
 					&:hover {
 						color: var(--clr-blue);
@@ -1116,6 +1100,7 @@ questions
 						}
 					}
 				}
+				color: var(--clr-blue-secondary);
 			}
 		}
 		&--content {
@@ -1124,6 +1109,7 @@ questions
 		}
 		&--half {
 			display: flex;
+
 			gap: 2rem;
 			.footer__nav--content:first-of-type {
 				padding-right: 2rem;

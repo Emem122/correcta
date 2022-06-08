@@ -17,27 +17,13 @@ scrollLinks.forEach(function (link) {
 		const element = document.getElementById(id);
 		const navHeight = document.querySelector(".header").getBoundingClientRect().height;
 		console.log(id, element, navHeight);
-		let position = element.offsetTop - navHeight;
+		let position = element.offsetTop - navHeight - 50;
 		window.scrollTo({
 			left: 0,
 			top: position,
 		});
 	});
 });
-
-// scrollinの設定
-// $(function () {
-// 	$(window).scroll(function () {
-// 		$(".fadein").each(function () {
-// 			var elemPos = $(this).offset().top;
-// 			var scroll = $(window).scrollTop();
-// 			var windowHeight = $(window).height();
-// 			if (scroll > elemPos - windowHeight + 100) {
-// 				$(this).addClass("scrollin");
-// 			}
-// 		});
-// 	});
-// });
 
 //gsap
 const tl = gsap.timeline({
@@ -106,14 +92,6 @@ tl.from(
 /* =================================== 
 スクロールアニメーション
 	==================================== */
-// gsap.to('.js-demo-section', { //アニメーションしたい要素を指定
-// 	x: 800, //横に800px動かす
-// 	scrollTrigger: {
-// 		trigger: '.js-trigger',//アニメーションが始まるトリガーとなる要素
-// 		start: 'top center' //アニメーションが始まる位置を指定
-// 	}
-// });
-
 /* cando section */
 const candoSection = gsap.timeline({
 	defaults: {
