@@ -1,6 +1,5 @@
 @charset "utf-8";
 @import "reset";
-@import "variables";
 
 /* Font links */
 @import url("https://fonts.googleapis.com/css2?family=Saira:wght@300;400;500;600;800&display=swap");
@@ -31,15 +30,9 @@ $breakpoints: (
 		@content;
 	}
 }
-// 呼び出し(モバイルファースト)
-// @include mq(min-sp) {}
-// 呼び出し(PCファースト)
-// @include mq(max-sp) {}
 
 /* image path */
 $image: "../img/";
-// 呼び出し
-// background-image: url(#{$image}category001.png);
 
 /* root */
 :root {
@@ -71,12 +64,6 @@ $image: "../img/";
 	--spacing: 0.1rem;
 	--radius: 0.5rem;
 	--button-shadow: 1px 1px 15px rgba(0, 0, 0, 0.1);
-	// --dark-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
-	// --max-width: 1170px;
-}
-
-@include mq(max-sp) {
-	// :root {}
 }
 
 /* br */
@@ -115,6 +102,7 @@ body {
 	font-family: var(--ff-primary);
 	letter-spacing: var(--spacing);
 	box-sizing: border-box;
+	overflow-x: hidden;
 }
 
 h1 {
@@ -180,8 +168,8 @@ button {
 
 /*画面全体のフェードイン設定*/
 body {
-	animation: fadeIn 3s ease 0s 1 normal;
-	-webkit-animation: fadeIn 3s ease 0s 1 normal;
+	animation: fadeIn 2s ease 0s 1 normal;
+	-webkit-animation: fadeIn 2s ease 0s 1 normal;
 }
 
 @keyframes fadeIn {
@@ -206,22 +194,22 @@ body {
 
 /*各部分のフェードイン設定*/
 /* 画面外にいる状態 */
-.fadein {
-	opacity: 0.1;
-	transform: translate(0, 50px);
-	transition: all 500ms;
-}
-/* 画面内に入った状態 */
-.fadein.scrollin {
-	opacity: 1;
-	transform: translate(0, 0);
-}
-.fadein.later1 {
-	transition: all 700ms;
-}
-.fadein.later2 {
-	transition: all 900ms;
-}
+// .fadein {
+// 	opacity: 0.1;
+// 	transform: translate(0, 40px);
+// 	transition: all 420ms;
+// }
+// /* 画面内に入った状態 */
+// .fadein.scrollin {
+// 	opacity: 1;
+// 	transform: translate(0, 0);
+// }
+// .fadein.later1 {
+// 	transition: all 700ms;
+// }
+// .fadein.later2 {
+// 	transition: all 900ms;
+// }
 
 /* =================================== 
 header
@@ -235,8 +223,13 @@ header
 	font-weight: bold;
 	background-color: #fff;
 	position: fixed;
-	width: 100vw;
+	width: 100%;
 	z-index: 100;
+	box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.08);
+	border-radius: 0 0 35px 35px;
+	@include mq(max-sp) {
+		border-radius: 0 0 30px 30px;
+	}
 	.wrapper {
 		display: flex;
 		align-items: center;
@@ -442,7 +435,7 @@ hero メインビジュアル
 		gap: 8rem;
 
 		@include mq(max-tab) {
-			height: auto;
+			// height: auto;
 			flex-direction: column-reverse;
 			padding: clamp(1rem, 2vw, 4rem) 0 3rem;
 			margin-left: auto;
@@ -970,6 +963,7 @@ questions
 		color: #333;
 		address {
 			line-height: 1.5;
+			font-style: normal;
 			a {
 				color: var(--clr-blue-secondary);
 				font-style: normal;
@@ -1043,21 +1037,23 @@ questions
 		margin-bottom: 2rem;
 	}
 	&--btn {
-		display: inline-block;
 		margin-top: 3rem;
-		padding: 2rem 5rem;
-		border-radius: 50px;
-		background-color: var(--clr-yellow);
-		border: 3px solid var(--clr-yellow);
-		color: #fff;
-		font-weight: bold;
-		font-size: var(--fz-xl);
-		@include mq(min-pc) {
-			&:hover {
-				border: 3px solid #fff;
-				background-color: transparent;
-				background-color: #fff;
-				color: var(--clr-blue);
+		a {
+			display: inline-block;
+			padding: 2rem 5rem;
+			border-radius: 50px;
+			background-color: var(--clr-yellow);
+			border: 3px solid var(--clr-yellow);
+			color: #fff;
+			font-weight: bold;
+			font-size: var(--fz-xl);
+			@include mq(min-pc) {
+				&:hover {
+					border: 3px solid #fff;
+					background-color: transparent;
+					background-color: #fff;
+					color: var(--clr-blue);
+				}
 			}
 		}
 	}
